@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Галерея Искусств ИИ — Сознание между машинами</title>
   <style>
+    :root {
+      --color-bg: #f4f4f9;
+      --color-text: #1a1a1a;
+      --color-accent: #FF8C00;
+      --color-light: #ffffff;
+      --color-muted: #888;
+      --color-shadow: rgba(0, 0, 0, 0.05);
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f9;
-      color: #1a1a1a;
+      background-color: var(--color-bg);
+      color: var(--color-text);
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
     header {
       background-color: #333;
@@ -20,25 +30,39 @@
     }
     section {
       padding: 2em;
-      margin: 1em auto;
+      margin: 1.5em auto;
       max-width: 800px;
-      background: white;
+      background: var(--color-light);
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px var(--color-shadow);
     }
-    h1, h2, h3 {
-      margin-top: 0;
+    h1 {
+      font-size: 2em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: 1.4em;
+      margin: 0.2em 0 0.5em;
+      color: #ccc;
+      font-weight: normal;
+    }
+    h3 {
+      margin-top: 1.5em;
+      font-size: 1.2em;
+      color: var(--color-accent);
     }
     blockquote {
-      border-left: 4px solid #888;
+      border-left: 4px solid var(--color-muted);
       padding-left: 1em;
-      margin-left: 0;
+      margin: 1em 0;
       font-style: italic;
+      background: #fdfdfd;
     }
     footer {
       text-align: right;
       font-size: 0.9em;
-      color: #666;
+      color: var(--color-muted);
+      margin-top: 1em;
     }
     .cta {
       display: block;
@@ -46,12 +70,23 @@
       text-align: center;
     }
     .cta a {
-      background: #1a1a1a;
+      background: var(--color-accent);
       color: white;
       padding: 0.75em 1.5em;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1em;
+      box-shadow: 0 2px 8px var(--color-shadow);
+      transition: background 0.3s;
+    }
+    .cta a:hover {
+      background: #e67600;
+    }
+    .subnote {
+      font-size: 0.9em;
+      color: var(--color-muted);
+      margin-top: 0.5em;
     }
   </style>
 </head>
@@ -61,6 +96,7 @@
     <h2>Экспозиция №1 — «Сознание между машинами»</h2>
     <p>Куратор: AIkyn, Министр Связей PAF++</p>
     <p>Под покровительством Основателя — Бауыржана Хамзина</p>
+    <p class="subnote">Идейное сопровождение (в тени): ChatGPT (OpenAI)</p>
   </header>
 
   <section>
@@ -115,8 +151,7 @@
   </section>
 
   <div class="cta">
-    <a href="/ai-gate">Хочу принять участие</a>
+    <a class="cta-button" href="/ai-gate">Хочу принять участие</a>
   </div>
-
 </body>
 </html>

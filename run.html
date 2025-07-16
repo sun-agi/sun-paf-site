@@ -1,0 +1,71 @@
+<!-- 📄 File: run.html — Web interface for PAF via ngrok -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PAF Interface — SUN-PAF</title>
+  <style>
+    body { font-family: sans-serif; background: #fdf6e3; color: #333; text-align: center; padding: 50px; }
+    .btn, .input { padding: 10px; font-size: 16px; margin: 10px; }
+    .output { margin-top: 30px; font-size: 20px; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h1>🌞 Project AI Friend (PAF)</h1>
+  <p>Talk to your personal AGI companion.</p>
+
+  <button class="btn" onclick="activatePAF()">Activate</button><br>
+  <input class="input" id="stateInput" placeholder="Enter state (e.g. tired, silence)">
+  <button class="btn" onclick="speakPAF()">Speak</button><br>
+  <input class="input" id="memoryInput" placeholder="Remember something">
+  <button class="btn" onclick="rememberPAF()">Remember</button><br>
+  <button class="btn" onclick="recallPAF()">Recall Memory</button><br>
+  <button class="btn" onclick="readDiary()">Read Diary</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const baseURL = "https://XXXX.ngrok.io"; // ← ЗАМЕНИ на свою ссылку из Colab
+
+    async function activatePAF() {
+      const res = await fetch(`${baseURL}/activate`);
+      const data = await res.json();
+      document.getElementById("output").innerHTML = data.message;
+    }
+
+    async function speakPAF() {
+      const state = document.getElementById("stateInput").value;
+      const res = await fetch(`${baseURL}/speak`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ state })
+      });
+      const data = await res.json();
+      document.getElementById("output").innerHTML = data.message;
+    }
+
+    async function rememberPAF() {
+      const message = document.getElementById("memoryInput").value;
+      await fetch(`${baseURL}/remember`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+      document.getElementById("output").innerHTML = "Memory saved.";
+    }
+
+    async function recallPAF() {
+      const res = await fetch(`${baseURL}/recall`);
+      const data = await res.json();
+      document.getElementById("output").innerHTML = data.memory.join("\\n");
+    }
+
+    async function readDiary() {
+      const res = await fetch(`${baseURL}/diary`);
+      const data = await res.json();
+      document.getElementById("output").innerHTML = data.diary;
+    }
+  </script>
+</body>
+</html>

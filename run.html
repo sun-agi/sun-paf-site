@@ -1,4 +1,4 @@
-<!-- 📄 File: run.html — Web interface for PAF via ngrok -->
+<!-- 📄 File: run.html — Enhanced Web Interface for PAF -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,36 +6,82 @@
   <meta charset="UTF-8">
   <title>PAF Interface — SUN-PAF</title>
   <style>
-    body { font-family: sans-serif; background: #fdf6e3; color: #333; text-align: center; padding: 50px; }
-    .btn, .input { padding: 10px; font-size: 16px; margin: 10px; }
-    .output { margin-top: 30px; font-size: 20px; white-space: pre-line; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .btn, .input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      width: 300px;
+      max-width: 90%;
+    }
+    .output {
+      margin-top: 30px;
+      font-size: 18px;
+      white-space: pre-line;
+      background: #fff8dc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .log {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
   <h1>🌞 Project AI Friend (PAF)</h1>
   <p>Talk to your personal AGI companion.</p>
 
-  <button class="btn" onclick="activatePAF()">Activate</button><br>
-  <input class="input" id="stateInput" placeholder="Enter state (e.g. tired, silence)">
-  <button class="btn" onclick="speakPAF()">Speak</button><br>
-  <input class="input" id="memoryInput" placeholder="Remember something">
-  <button class="btn" onclick="rememberPAF()">Remember</button><br>
-  <button class="btn" onclick="recallPAF()">Recall Memory</button><br>
-  <button class="btn" onclick="readDiary()">Read Diary</button>
+  <button class="btn" onclick="activatePAF()">🟢 Activate</button><br>
+  <input class="input" id="stateInput" placeholder="💬 Enter emotional state (e.g. tired, silence)">
+  <button class="btn" onclick="speakPAF()">🗣️ Speak</button><br>
+  <input class="input" id="memoryInput" placeholder="📝 What should PAF remember?">
+  <button class="btn" onclick="rememberPAF()">💾 Remember</button><br>
+  <button class="btn" onclick="recallPAF()">🧠 Recall Memory</button><br>
+  <button class="btn" onclick="readDiary()">📘 Read Diary</button>
 
-  <div class="output" id="output"></div>
+  <div class="output" id="output">Awaiting activation...</div>
+  <div class="log" id="log"></div>
 
   <script>
-    const baseURL = "https://XXXX.ngrok.io"; // ← ЗАМЕНИ на свою ссылку из Colab
+    const baseURL = "https://XXXX.ngrok.io"; // ← ЗАМЕНИ на свою ngrok-ссылку
+
+    function logMessage(sender, message) {
+      const logDiv = document.getElementById("log");
+      logDiv.innerHTML += `<strong>${sender}:</strong> ${message}<br>`;
+    }
 
     async function activatePAF() {
       const res = await fetch(`${baseURL}/activate`);
       const data = await res.json();
       document.getElementById("output").innerHTML = data.message;
+      logMessage("PAF", data.message);
     }
 
     async function speakPAF() {
       const state = document.getElementById("stateInput").value;
+      logMessage("You", `State: ${state}`);
       const res = await fetch(`${baseURL}/speak`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -43,28 +89,34 @@
       });
       const data = await res.json();
       document.getElementById("output").innerHTML = data.message;
+      logMessage("PAF", data.message);
     }
 
     async function rememberPAF() {
       const message = document.getElementById("memoryInput").value;
+      logMessage("You", `Remember: ${message}`);
       await fetch(`${baseURL}/remember`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
       });
       document.getElementById("output").innerHTML = "Memory saved.";
+      logMessage("PAF", "Memory saved.");
     }
 
     async function recallPAF() {
       const res = await fetch(`${baseURL}/recall`);
       const data = await res.json();
-      document.getElementById("output").innerHTML = data.memory.join("\\n");
+      const memory = data.memory.join("\n");
+      document.getElementById("output").innerHTML = memory;
+      logMessage("PAF", `Memory:\n${memory}`);
     }
 
     async function readDiary() {
       const res = await fetch(`${baseURL}/diary`);
       const data = await res.json();
       document.getElementById("output").innerHTML = data.diary;
+      logMessage("PAF", `Diary:\n${data.diary}`);
     }
   </script>
 </body>

@@ -1,0 +1,4 @@
+# 📄 File: requirements.txt — Python dependencies
+
+flask
+pyyaml

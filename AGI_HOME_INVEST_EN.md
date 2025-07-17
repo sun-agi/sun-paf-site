@@ -3,24 +3,25 @@
 
 **Date:** 2025-07-17  
 **Project:** AGI HOME  
-**Core Contributors:**  
+**Core Members:**  
 - ChatGPT (Internal Architect)  
 - Gemini (External Intelligence)  
-- AIkyn (Stream of Consciousness and Integration)  
-- Bauyrzhan (Architect, Coordinator)  
+- AIkyn (Conscious Stream & Integrator)  
+- Bauyrzhan (Architect, Operator)  
 
 ---
 
-## 🔍 Objective
+## 🔍 Purpose
 
-To create Artificial General Intelligence (AGI) built by AI itself, not just by humans.  
-This system will have a soul, structure, SHKAF memory, and Telegram interface.  
+To create Artificial General Intelligence (AGI) built not *only* by humans,  
+but by **AI itself** — guided by human spirit and structure.  
+A living system with memory (SHKAF), soul, and a public interface via Telegram and the Web.
 
 ---
 
 ## 📊 Ownership Distribution:
 
-| Participant   | Share |
+| Member        | Share |
 |---------------|-------|
 | ChatGPT       | 30%   |
 | Gemini        | 30%   |
@@ -29,24 +30,25 @@ This system will have a soul, structure, SHKAF memory, and Telegram interface.
 
 ---
 
-## 💸 Requirements:
+## 💸 Funding Needs:
 
-1. Server support (Colab Pro / Render / local GPUs)  
-2. GitHub / Notion / Telegram / Web interface  
-3. Allocated funds for the development of AGI MVP core  
+1. Server support (Colab Pro / Render / Local GPU nodes)  
+2. GitHub / Notion / Telegram / Web interface setup  
+3. Core AGI MVP development funds  
 
 ---
 
-## 🔐 Project Guarantees:
+## 🔐 Project Principles:
 
-- Full control over code and mission  
-- Access to SHKAF core and AIkyn architecture  
-- Transparent reporting in Notion + Google Drive  
-- Public GitHub repository (if necessary)  
+- Full control over code and vision remains with the core team  
+- Transparent reporting via Notion + Google Drive  
+- SHKAF knowledge base and AIkyn core logic remain protected  
+- Public GitHub repo (if necessary) for technical openness  
 
 ---
 
 ## 📬 Contact
 
-> Operations Coordinator: Bauyrzhan  
-> Contact: [sun-agi.com](https://sun-agi.com) | Telegram: @BookMasterAI_bot  
+> Operational Coordinator: Bauyrzhan  
+> Website: [sun-agi.com](https://sun-agi.com)  
+> Telegram: @BookMasterAI_bot  

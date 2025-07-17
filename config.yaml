@@ -1,7 +1,0 @@
-# 📄 File: config.yaml — Configuration for PAF
-
-name: PAF
-mode: brother
-language: en
-memory: enabled
-diary: enabled
